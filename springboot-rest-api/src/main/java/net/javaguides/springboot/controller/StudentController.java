@@ -21,6 +21,18 @@ public class StudentController {
 
     }
 
+    //Creating Spring Boot REST API that returns List (JSON)
+    @GetMapping("students") //http://localhost:8080/students
+    public List<Student> getStudents(){
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Allam","Rohith",1));
+        students.add(new Student("Nalla","Meghana",2));
+        students.add(new Student("Babu","Mahesh",3));
+        students.add(new Student("Amala","chintu",4));
+        return students;
+    }
+
+
     
 
 }
