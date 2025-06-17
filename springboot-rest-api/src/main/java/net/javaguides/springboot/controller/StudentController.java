@@ -32,6 +32,22 @@ public class StudentController {
         return students;
     }
 
+    /*SpringBoot  REST API with Path Variable
+     {id} - URI template variable
+     whenever client sends request with url http://localhost:8080/students/1 then this 1 value is stored in URI 
+     template variable
+     @PathVariable annotation used on a method argument to bind it to the value of a URI template variable
+     if variables are different then pass the URI template variable @PathVariable("id") int studentId
+     So here the id value is dynamically passed by the client
+     */  
+    @GetMapping("students/{first-name}/{last-name}/{id}")
+    public Student studentPathVariable(@PathVariable int id,
+                                        @PathVariable("first-name") String firstName,
+                                        @PathVariable("last-name") String lastName){
+        return new Student(firstName,lastName,id);
+    }
+
+
 
     
 
