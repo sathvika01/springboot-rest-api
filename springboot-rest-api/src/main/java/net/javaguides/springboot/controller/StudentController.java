@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.javaguides.springboot.bean.Student;
@@ -32,7 +33,7 @@ public class StudentController {
         return students;
     }
 
-    /*SpringBoot  REST API with Path Variable
+    /*SpringBoot  REST API with Path Variable(@PathVariable)
      {id} - URI template variable
      whenever client sends request with url http://localhost:8080/students/1 then this 1 value is stored in URI 
      template variable
@@ -44,6 +45,18 @@ public class StudentController {
     public Student studentPathVariable(@PathVariable int id,
                                         @PathVariable("first-name") String firstName,
                                         @PathVariable("last-name") String lastName){
+        return new Student(firstName,lastName,id);
+    }
+
+    /*RequestParameter
+    lets say we got a request from client with a query parameter (which has ?) 
+    http://localhost:8080/Students/query?firstName=Sathvika&lastName=Billa&id=1
+     * 
+     */
+    @GetMapping("Students/query")
+    public Student studentRequestVariable(@RequestParam int id,
+                                            @RequestParam String firstName,
+                                            @RequestParam String lastName){
         return new Student(firstName,lastName,id);
     }
 
